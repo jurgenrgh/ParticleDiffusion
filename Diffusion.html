@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Diffusion</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width = device-width, initial-scale = 1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <link rel="stylesheet" href="ParticleDiffusion.css">
+</head>
+
+<body>
+    <div id="controls">
+        Number of Particles:
+        <span id="num-particles-val"></span>
+        <input id="density-control" class="slider-control" type="range" min="0" max="0.001" step="0.00001"
+            oninput="onDensityChange(this.value)">
+        <br>
+        Number Infectious:
+        <span id="num-infectious-val"></span>
+        <input id="infectious-control" class="slider-control" type="range" min="0" max="100" step="1"
+            oninput="onInfectiousChange(this.value)">
+        <br>
+        Radius:
+        <span id="radius-particles-val"></span>
+        <input id="radius-control" class="slider-control" type="range" min="1" max="50" step="1"
+            oninput="onRadiusChange(this.value)">
+        <br>
+        Mean Velocity:
+        <span id="mean-velocity-val"></span>
+        <input id="velocity-control" class="slider-control" type="range" min="0" max="10" step="0.1"
+            oninput="onVelocityChange(this.value)">
+        <br>
+        <button class="waves-effect waves-light btn" onclick="stopAndGo()">STOP</button>
+        <button class="waves-effect waves-light btn" onclick="restart()">RESTART</button>
+        <button class="waves-effect waves-light btn" onclick="resetParams()">RESET</button>
+        <button class="waves-effect waves-light btn" onclick="newInfection(3)">INFECT +1</button>
+    </div>
+    
+    <svg id="canvas">
+        <rect width="100%" height="100%" style="fill:none;stroke-width:1;stroke:rgb(0,0,0)" />
+    </svg>
+
+    <script src="Diffusion.js"></script>
+</body>
+
+</html>
